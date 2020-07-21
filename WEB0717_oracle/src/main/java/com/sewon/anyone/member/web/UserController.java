@@ -123,6 +123,10 @@ public class UserController {
 		//mybatis  debug Url :  http://localhost:8080/WEB0716/login/login.do?userId=psy&passwd=1234
 		int flag = this.userService.idPassCheck(user);
 		LOGGER.debug("-----idpasscheck COUNT(*)== "+flag);
+		
+		UserVO outVO = (UserVO) this.userService.doSelectOne(user);
+		LOGGER.debug("-----doSelectOne outvo== "+ outVO);
+		
 		return "login/login";
 	}
 

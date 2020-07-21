@@ -149,14 +149,14 @@
 				success : function(data) { //성공
 	
 					 console.log("data success");
-			/* 		var jData = JSON.parse(data);
+			var jData = JSON.parse(data);
 					if (null != jData && jData.msgId == "30") {
 						alert(jData.msgMsg);
 						//목록화면으로 이동
 						goRetrieve(id); 
 					} else {
 						alert(jData.msgMsg);
-					}*/
+					}
 
 				},
 				error : function(xhr, status, error) {

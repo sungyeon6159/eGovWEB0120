@@ -17,7 +17,10 @@ import egovframework.rte.psl.dataaccess.EgovAbstractMapper;
 @Repository("userMapper")
 public class UserMapper extends EgovAbstractMapper implements UserDao {
 	
-	
+	/**@Resource (name = "context-mapper.xml에서  SqlSession의 id와 매칭 ->> SqlSessionFactoryBean 안에 dataSource
+	& mapperLocation의 위치
+	& typeAlias를 사용할 config.xml 의 configLocation 설정   ")
+	*/
     @Resource(name = "sqlSession")
     public void setSqlSessionFactory(SqlSessionFactory sqlSession) {
     	super.setSqlSessionFactory(sqlSession);

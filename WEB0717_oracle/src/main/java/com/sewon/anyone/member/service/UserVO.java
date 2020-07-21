@@ -30,20 +30,20 @@ import com.sewon.anyone.cmn.DTO;
  */
 public class UserVO extends DTO {
 	
-	private int userNo			;	/**사용자번호   */
-	private String userId		;	/**사용자ID    */
-	private String nickName		;	/**닉네임      */
-	private String userName		;	/**사용자이름   */
-	private String passwd		;	/**비밀번호    */
-	private Level authLevel		;	/**권한레벨    */
-	private int loginCnt		;	/**로그인회수   */
-	private String mobile		;	/**전화번호    */
-	private String email		;	/**이메일주소   */
-	private String addr			;	/**거주지주소   */
-	private String modId		;	/**수정자      */
-	private String regId		;	/**작성자      */
-	private String modDate		;	/**수정일      */
-	private String regDate		;	/**작성일      */
+	private int userNo			;	/**1. 사용자번호   */
+	private String userId		;	/**2. 사용자ID    */
+	private String nickName		;	/**3. 닉네임      */
+	private String userName		;	/**4. 사용자이름   */
+	private String passwd		;	/**5. 비밀번호    */
+	private Level authLevel		;	/**6. 권한레벨    */
+	private int loginCnt		;	/**7. 로그인회수   */
+	private String mobile		;	/**8. 전화번호    */
+	private String email		;	/**9. 이메일주소   */
+	private String addr			;	/**10.거주지주소   */
+	private String modId		;	/**11.수정자      */
+	private String regId		;	/**12.작성자      */
+	private String modDate		;	/**13.수정일      */
+	private String regDate		;	/**14.작성일      */
 	
 	public UserVO(){}
 
