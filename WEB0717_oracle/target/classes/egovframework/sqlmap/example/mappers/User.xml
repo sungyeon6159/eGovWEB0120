@@ -21,6 +21,7 @@
 		<result property="totalCnt" column="total_cnt"/>
 	</resultMap>
 
+	<!-- 회원가입  -->
 	<insert id="doInsert" parameterType="UserVO">
 		 <selectKey keyProperty="userNo" resultType="int" order="BEFORE">  
 	        select seq_user.nextval FROM dual
@@ -75,6 +76,31 @@
 		AND   PASSWD  = #{passwd,jdbcType=VARCHAR}
     </select>
     
+    
+     <sql id="userColumns">
+            user_no as userNo
+           ,user_id as userId		
+           ,nick_name as nickName	
+           ,user_name as userName	
+           ,passwd 					
+           ,auth_level as authLevel	
+           ,login_cnt as loginCnt	
+           ,mobile 						
+           ,email 					
+           ,addr 					
+           ,mod_id as modId 		
+           ,reg_id as regId			
+           ,mod_date as modDate			
+           ,reg_date as regDate			
+     </sql>
+    
+     <!-- 단건조회 -->
+    <select id="doSelectOne" parameterType="UserVO" resultType="UserVO">
+		SELECT
+		    <include refid="userColumns"/>
+		FROM users
+		WHERE user_id = #{userId}
+    </select>
 
 
 
