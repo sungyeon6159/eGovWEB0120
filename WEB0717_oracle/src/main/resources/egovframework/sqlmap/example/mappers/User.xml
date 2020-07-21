@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sewon.anyone.member.service.imple.UserMapper">
+
+	<resultMap id="userDetail" type="com.sewon.anyone.member.service.UserVO">
+		<result property="userNo" column="user_no"/>
+		<result property="userId" column="user_id"/>
+		<result property="nickName" column="nick_name"/>
+		<result property="userName" column="user_name"/>
+		<result property="passwd" column="passwd"/>
+		<result property="authLevel" column="auth_level"/>
+		<result property="loginCnt" column="login_cnt"/>
+		<result property="mobile" column="mobile"/>
+		<result property="email" column="email"/>
+		<result property="addr" column="addr"/>
+		<result property="modId" column="mod_id"/>
+		<result property="regId" column="reg_id"/>
+		<result property="modDate" column="mod_date"/>
+		<result property="regDate" column="reg_date"/>
+		<result property="num" column="rnum"/>
+		<result property="totalCnt" column="total_cnt"/>
+	</resultMap>
+
+	<insert id="doInsert" parameterType="UserVO">
+		 <selectKey keyProperty="userNo" resultType="int" order="BEFORE">  
+	        select seq_user.nextval FROM dual
+	     </selectKey>
+					INSERT INTO USERS (                         
+					    USER_NO,                                
+					    USER_ID,                                
+					    NICK_NAME,                              
+					    USER_NAME,                              
+					    PASSWD,                                 
+					    AUTH_LEVEL,                             
+					    LOGIN_CNT,                              
+					    MOBILE,                                 
+					    EMAIL,                                  
+					    ADDR,                                   
+					    MOD_ID,                                 
+					    REG_ID,                                 
+					    MOD_DATE,                               
+					    REG_DATE                                
+					) VALUES (                                  
+					   #{userNo}         
+					   ,#{userId}         
+					   ,#{nickName}         
+					   ,#{userName}         
+					   ,#{passwd}         
+					   ,#{authLevel}         
+					   ,#{loginCnt}         
+					   ,#{mobile}         
+					   ,#{email}         
+					   ,#{addr}         
+					   ,#{modId}         
+					   ,#{regId}         
+					   ,#{modDate}         
+					   ,sysdate
+					   ,sysdate      
+					)                   											
+					
+					
+					
+
+	</insert>
+
+	
+
+</mapper>
