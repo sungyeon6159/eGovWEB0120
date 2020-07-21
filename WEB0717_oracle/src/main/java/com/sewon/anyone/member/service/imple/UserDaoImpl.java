@@ -2,6 +2,9 @@ package com.sewon.anyone.member.service.imple;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -10,13 +13,13 @@ import com.sewon.anyone.cmn.DTO;
 import com.sewon.anyone.member.service.UserDao;
 
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
+import org.apache.ibatis.session.SqlSessionFactory;
 
-@Repository("userDAO")
+
 public class UserDaoImpl extends EgovAbstractDAO implements UserDao {
-
 	//Logger
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
-
+	
 	
 	public UserDaoImpl() {}
 
@@ -32,7 +35,7 @@ public class UserDaoImpl extends EgovAbstractDAO implements UserDao {
 
 	@Override
 	public int doInsert(DTO dto) {
-		return (int) insert("userDAO.doInsert", dto);
+		return (int) insert("doInsert", dto);
 	}
 
 	@Override

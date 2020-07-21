@@ -15,47 +15,47 @@ public interface UserService {
      * @param dto
      * @return int
      */
-	public int idPassCheck(DTO dto);
+	public int idPassCheck(DTO dto) throws NullPointerException, Exception;
 
 	/**
 	 * 등록
 	 * @param dto
 	 * @return int
 	 */
-	public int doInsert(DTO dto);
+	public int doInsert(DTO dto) throws NullPointerException, Exception;;
 	/**
 	 * 수정
 	 * @param dto
 	 * @return int
 	 */
-	public int doUpdate(DTO dto);
+	public int doUpdate(DTO dto) throws NullPointerException, Exception;;
 
 	/**
 	 * 단건조회
 	 * @param dto
 	 * @return DTO
 	 */
-	public DTO doSelectOne(DTO dto);
+	public DTO doSelectOne(DTO dto) throws NullPointerException, Exception;;
 
 	/**
 	 * 삭제
 	 * @param dto
 	 * @return int
 	 */
-	public int doDelete(DTO dto);
+	public int doDelete(DTO dto) throws NullPointerException, Exception;;
 
 	/**
 	 * 목록조회
 	 * @param dto
 	 * @return
 	 */
-	public List<?> doRetrieve(DTO dto);
+	public List<?> doRetrieve(DTO dto) throws NullPointerException, Exception;;
 
 	/**
 	   * 최초가입시 : Level.BASIC
 	   * @param user
 	   */
-	int add(UserVO user);
+	int add(UserVO user) throws NullPointerException, Exception;;
 
 	/**
 	   * 사용자 등업
@@ -67,6 +67,6 @@ public interface UserService {
 	   * 3. 등업한다.
 	 * @throws SQLException
 	   */
-	void upgradeLevels(UserVO userVO) throws Exception;
+	void upgradeLevels(UserVO userVO) throws NullPointerException, Exception;;
 
 }

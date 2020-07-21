@@ -58,10 +58,26 @@
 					   ,sysdate      
 					)                   											
 					
-					
-					
-
 	</insert>
+ 	 
+ 	<!-- id check -->
+    <select id="idCheck" parameterType="UserVO" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM USERS
+		WHERE USER_ID = #{userId,jdbcType=VARCHAR}
+    </select>
+
+    <!-- pass check -->
+    <select id="idPassCheck" parameterType="UserVO" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM USERS
+		WHERE USER_ID = #{userId,jdbcType=VARCHAR}
+		AND   PASSWD  = #{passwd,jdbcType=VARCHAR}
+    </select>
+    
+
+
+
 
 	
 

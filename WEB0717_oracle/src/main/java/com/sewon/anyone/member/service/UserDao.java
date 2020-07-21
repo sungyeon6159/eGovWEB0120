@@ -19,54 +19,54 @@ public interface UserDao {
 	 * @param dto
 	 * @return int
 	 */
-	public int passCheck(DTO dto);
+	public int passCheck(DTO dto) throws NullPointerException, Exception ;
 	/**
 	 * ID 체크: 성공>0
 	 * @param dto
 	 * @return int
 	 */
-	public int idCheck(DTO dto);
+	public int idCheck(DTO dto) throws NullPointerException, Exception;
 
 	/**
 	 * 등록
 	 * @param dto
 	 * @return int
 	 */
-	public int doInsert(DTO dto);
+	public int doInsert(DTO dto) throws NullPointerException, Exception;
 	/**
 	 * 수정
 	 * @param dto
 	 * @return int
 	 */
-	public int doUpdate(DTO dto);
+	public int doUpdate(DTO dto) throws NullPointerException, Exception;
 
 	/**
 	 * 단건조회
 	 * @param dto
 	 * @return DTO
 	 */
-	public DTO doSelectOne(DTO dto);
+	public DTO doSelectOne(DTO dto) throws NullPointerException, Exception;
 
 	/**
 	 * 삭제
 	 * @param dto
 	 * @return int
 	 */
-	public int doDelete(DTO dto);
+	public int doDelete(DTO dto) throws NullPointerException, Exception;
 
 	/**
 	 * 목록조회
 	 * @param dto
 	 * @return
 	 */
-	public List<?> doRetrieve(DTO dto);
+	public List<?> doRetrieve(DTO dto) throws NullPointerException, Exception;
 
 	/**
 	 * 전체 조회
 	 * @param dto
 	 * @return
 	 */
-	public List<?> getAll(DTO dto);
+	public List<?> getAll(DTO dto) throws NullPointerException, Exception;
 	
 	
 	/**
@@ -74,5 +74,5 @@ public interface UserDao {
 	 * @param dto
 	 * @return
 	 */
-	public int idPassCheck(DTO dto);
+	public int idPassCheck(DTO dto) throws NullPointerException, Exception;
 }

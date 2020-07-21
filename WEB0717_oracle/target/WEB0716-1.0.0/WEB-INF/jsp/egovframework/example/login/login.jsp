@@ -61,12 +61,12 @@
                             <div class="card-body pt-5">
                                 <a class="text-center" href="#"> <h4> LOGIN</h4></a>
         
-                                 <form:form commandName="searchVO"  id="login_form"  method="post" class="mt-5 mb-5 login-input" name="login_form">
+                                 <form:form commandName="searchVO"  id="login_form"  method="GET" class="mt-5 mb-5 login-input" name="login_form">
                                     <div class="form-group">
-                                        <input type="text"  name="id"id="id" class="form-control" placeholder="아이디" 	maxlength="20">
+                                        <input type="text"  name="userId" id="userId" class="form-control" placeholder="아이디" 	maxlength="20">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password"  name="password" id="password" class="form-control" placeholder="패스워드" maxlength="50">
+                                        <input type="password"  name="passwd" id="passwd" class="form-control" placeholder="패스워드" maxlength="50">
                                     </div>
                                 </form>
                                 
@@ -111,58 +111,51 @@
 			console.log("member_login");
 			//  document.login_form.submit();
 			
-			var id = $("#id").val().trim();
+			var id = $("#userId").val().trim();
 			if (null == id || id.length <= 1) {
-				$("#id").focus();
+				$("#userId").focus();
 				alert("아이디를 입력하세요.");
 				return;
 			}
 
-			var password = $("#password").val().trim();
+			var password = $("#passwd").val().trim();
 			if (null == password || password.length <= 1) {
-				$("#password").focus();
+				$("#passwd").focus();
 				alert("패스워드를 입력하세요.");
 				return;
 			}
 			
 			//동기통신 (form의 name)
-			var frm = document.login_form
+	/* 		var frm = document.login_form
 			frm.action = "${hContext}/login/idpass.do";
 			frm.submit(); 
-			
+			 */
 			
 
-/* 			//출근 시간 넘기기
+/* 			// 시간 넘기기
 			var date = new Date();
 			var attendTime = date.getHours();
-			
+			 */
 			$.ajax({
-				type : "POST",
+				type : "GET",
 				url : "${hContext}/login/login.do",
 				dataType : "html",
 				data : {
-					"id" : $("#id").val(),
-					"password" : $("#password").val(),
-					"seq" : "",
-					"attendTime" : attendTime,
-					"attendYN" : $("#attendYN").val(),
-					"leaveYN" : $("#leaveYN").val(),
-					"state" : $("#state").val(),
-					"workTime" : $("#workTime").val(),
-					"regId" : $("#id").val(),
-					"modId" : $("#id").val()
+					"userId" : $("#userId").val(),
+					"passwd" : $("#passwd").val(),
+					
 				},
 				success : function(data) { //성공
-
-				
-					var jData = JSON.parse(data);
+	
+					 console.log("data success");
+			/* 		var jData = JSON.parse(data);
 					if (null != jData && jData.msgId == "30") {
 						alert(jData.msgMsg);
 						//목록화면으로 이동
-						goRetrieve(id);
+						goRetrieve(id); 
 					} else {
 						alert(jData.msgMsg);
-					}
+					}*/
 
 				},
 				error : function(xhr, status, error) {
@@ -173,7 +166,7 @@
 				}
 
 			});//--ajax
- */
+ 
 
 		});
 	</script>

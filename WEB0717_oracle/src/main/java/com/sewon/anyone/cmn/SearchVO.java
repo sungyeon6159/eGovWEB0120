@@ -4,7 +4,6 @@
 package com.sewon.anyone.cmn;
 
 /**
- * sourcetree 첫 수정 commit
  * @author sist
  *
  */

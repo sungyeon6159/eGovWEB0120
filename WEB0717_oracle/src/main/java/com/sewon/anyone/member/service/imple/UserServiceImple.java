@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,44 +16,45 @@ import com.sewon.anyone.member.service.UserService;
 import com.sewon.anyone.member.service.UserVO;
 
 import egovframework.example.sample.service.impl.EgovSampleServiceImpl;
+import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 
 @Service("userService")
-public class UserServiceImple implements UserService {
+public class UserServiceImple extends EgovAbstractServiceImpl implements UserService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImple.class);
-
-	@Resource(name = "userDAO")
-	private UserDao userDao;
+	
+	@Resource(name = "userMapper")
+	private UserMapper userMapper;
 	
 	
 	@Override
-	public int idPassCheck(DTO dto) {
-		return userDao.idPassCheck(dto);
+	public int idPassCheck(DTO dto) throws NullPointerException, Exception  {
+		return userMapper.idPassCheck(dto);
 	}
 
 	@Override
-	public int doInsert(DTO dto) {
-		return userDao.doInsert(dto);
+	public int doInsert(DTO dto) throws NullPointerException, Exception {
+		return userMapper.doInsert(dto);
 	}
 
 	@Override
-	public int doUpdate(DTO dto) {
-		return userDao.doUpdate(dto);
+	public int doUpdate(DTO dto) throws NullPointerException, Exception {
+		return userMapper.doUpdate(dto);
 	}
 
 	@Override
-	public DTO doSelectOne(DTO dto) {
-		return userDao.doSelectOne(dto);
+	public DTO doSelectOne(DTO dto) throws NullPointerException, Exception {
+		return userMapper.doSelectOne(dto);
 	}
 
 	@Override
-	public int doDelete(DTO dto) {
-		return userDao.doDelete(dto);
+	public int doDelete(DTO dto) throws NullPointerException, Exception {
+		return userMapper.doDelete(dto);
 	}
 
 	@Override
-	public List<?> doRetrieve(DTO dto) {
-		return userDao.doRetrieve(dto);
+	public List<?> doRetrieve(DTO dto) throws NullPointerException, Exception {
+		return userMapper.doRetrieve(dto);
 	}
 
 	@Override

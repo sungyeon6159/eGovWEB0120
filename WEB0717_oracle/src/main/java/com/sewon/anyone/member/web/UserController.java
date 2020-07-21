@@ -41,6 +41,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springmodules.validation.commons.DefaultBeanValidator;
 
 import com.sewon.anyone.member.service.UserService;
+import com.sewon.anyone.member.service.UserVO;
 
 
 /**
@@ -65,7 +66,7 @@ public class UserController {
 	
 	 final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 	
-	 //ERROR -> context-common.xml 수정
+	//ERROR -> context-common.xml 수정
 	@Resource(name = "userService")
 	private UserService userService;
 	
@@ -91,11 +92,12 @@ public class UserController {
 	//http://localhost:8080/WEB0716/member/login.do
 
 	@RequestMapping(value = "/login/login.do")
-	public String dologin(@ModelAttribute("searchVO") SampleDefaultVO searchVO, ModelMap model) throws Exception {
+	public String dologin(@ModelAttribute("searchVO") SampleDefaultVO searchVO,UserVO user, ModelMap model) throws Exception {
 
 		
 		LOGGER.debug("------dologin-------");
-		
+		LOGGER.debug("------dologin-------"+searchVO);
+		LOGGER.debug("------dologin-------"+user);
 		
 		/** EgovPropertyService.sample */
 		searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
@@ -118,6 +120,9 @@ public class UserController {
 		paginationInfo.setTotalRecordCount(totCnt);
 		model.addAttribute("paginationInfo", paginationInfo);
 
+		//mybatis  debug Url :  http://localhost:8080/WEB0716/login/login.do?userId=psy&passwd=1234
+		int flag = this.userService.idPassCheck(user);
+		LOGGER.debug("-----idpasscheck COUNT(*)== "+flag);
 		return "login/login";
 	}
 
