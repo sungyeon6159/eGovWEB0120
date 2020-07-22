@@ -8,6 +8,7 @@
 		<typeAlias alias="sampleVO" type="egovframework.example.sample.service.SampleVO"/>
    		<typeAlias alias="UserVO" type="com.sewon.anyone.member.service.UserVO"/>
    		<typeAlias alias="SearchVOO" type="com.sewon.anyone.cmn.SearchVO"/>
+   		<typeAlias alias="BoardVO" type="com.sewon.anyone.board.service.BoardVO"/>
     </typeAliases>
 
 
