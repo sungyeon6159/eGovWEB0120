@@ -65,41 +65,39 @@
     <select id="idCheck" parameterType="UserVO" resultType="java.lang.Integer">
 		SELECT COUNT(*)
 		FROM USERS
-		WHERE USER_ID = #{userId,jdbcType=VARCHAR}
+		WHERE UPPER(USER_ID) = UPPER(#{userId,jdbcType=VARCHAR})
     </select>
 
     <!-- pass check -->
-    <select id="idPassCheck" parameterType="UserVO" resultType="java.lang.Integer">
+    <select id="passCheck" parameterType="UserVO" resultType="java.lang.Integer">
 		SELECT COUNT(*)
 		FROM USERS
-		WHERE USER_ID = #{userId,jdbcType=VARCHAR}
+		WHERE UPPER(USER_ID) = UPPER(#{userId,jdbcType=VARCHAR})
 		AND   PASSWD  = #{passwd,jdbcType=VARCHAR}
     </select>
-    
-    
-     <sql id="userColumns">
-            user_no as userNo
-           ,user_id as userId		
-           ,nick_name as nickName	
-           ,user_name as userName	
-           ,passwd 					
-           ,auth_level as authLevel	
-           ,login_cnt as loginCnt	
-           ,mobile 						
-           ,email 					
-           ,addr 					
-           ,mod_id as modId 		
-           ,reg_id as regId			
-           ,mod_date as modDate			
-           ,reg_date as regDate			
-     </sql>
     
      <!-- 단건조회 -->
     <select id="doSelectOne" parameterType="UserVO" resultType="UserVO">
 		SELECT
-		    <include refid="userColumns"/>
-		FROM users
-		WHERE user_id = #{userId}
+			    user_no as userNo,
+			    user_id as userId,
+			    nick_name as nickName,
+			    user_name as userName,
+			    passwd,
+			    TO_CHAR(auth_level),
+			    login_cnt as loginCnt,
+			    mobile,
+			    email,
+			    addr,
+			    mod_id as modId,
+			    reg_id as regId,
+			    TO_CHAR(MOD_DATE,'YYYY/MM/DD ') as modDate,
+			    TO_CHAR(REG_DATE,'YYYY/MM/DD ') as regDate,
+			    ROWNUM as num
+			    
+		 FROM
+	   		    users
+		WHERE UPPER(USER_ID) = UPPER(#{userId,jdbcType=VARCHAR})
     </select>
 
 

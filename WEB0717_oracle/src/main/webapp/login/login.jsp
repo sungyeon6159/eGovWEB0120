@@ -23,7 +23,6 @@
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -123,7 +122,7 @@
 				alert("패스워드를 입력하세요.");
 				return;
 			}
-			
+			/*		
 			//동기통신 (form의 name)
 			var frm = document.login_form
 			//frm.action = "/login/login.do";
@@ -131,10 +130,11 @@
 			
 			
 
-/* 			//출근 시간 넘기기
+ 			//출근 시간 넘기기
 			var date = new Date();
 			var attendTime = date.getHours();
-			
+			 */
+			 
 			$.ajax({
 				type : "POST",
 				url : "${hContext}/login/login.do",
@@ -172,7 +172,7 @@
 				}
 
 			});//--ajax
- */
+
 
 		});
 	</script>

@@ -21,6 +21,7 @@
 		<result property="totalCnt" column="total_cnt"/>
 	</resultMap>
 
+	<!-- 회원가입  -->
 	<insert id="doInsert" parameterType="UserVO">
 		 <selectKey keyProperty="userNo" resultType="int" order="BEFORE">  
 	        select seq_user.nextval FROM dual
@@ -58,10 +59,49 @@
 					   ,sysdate      
 					)                   											
 					
-					
-					
-
 	</insert>
+ 	 
+ 	<!-- id check -->
+    <select id="idCheck" parameterType="UserVO" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM USERS
+		WHERE UPPER(USER_ID) = UPPER(#{userId,jdbcType=VARCHAR})
+    </select>
+
+    <!-- pass check -->
+    <select id="passCheck" parameterType="UserVO" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM USERS
+		WHERE UPPER(USER_ID) = UPPER(#{userId,jdbcType=VARCHAR})
+		AND   PASSWD  = #{passwd,jdbcType=VARCHAR}
+    </select>
+    
+     <!-- 단건조회 -->
+    <select id="doSelectOne" parameterType="UserVO" resultType="UserVO">
+		SELECT
+			    user_no as userNo,
+			    user_id as userId,
+			    nick_name as nickName,
+			    user_name as userName,
+			    passwd,
+			    TO_CHAR(auth_level),
+			    login_cnt as loginCnt,
+			    mobile,
+			    email,
+			    addr,
+			    mod_id as modId,
+			    reg_id as regId,
+			    TO_CHAR(MOD_DATE,'YYYY/MM/DD ') as modDate,
+			    TO_CHAR(REG_DATE,'YYYY/MM/DD ') as regDate,
+			    ROWNUM as num
+			    
+		 FROM
+	   		    users
+		WHERE UPPER(USER_ID) = UPPER(#{userId,jdbcType=VARCHAR})
+    </select>
+
+
+
 
 	
 
